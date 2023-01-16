@@ -1,0 +1,138 @@
+@import "../../styles.scss";
+
+.user-auth-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2rem;
+  min-width: 40vw;
+  max-width: 80vw;
+  max-height: 80vh;
+  margin: 6em auto;
+  text-align: left;
+  color: $white;
+  background-color: rgba(185, 120, 7, 0.5);
+  border: 0.5rem solid $light-color;
+  border-radius: 0.5rem;
+  h2 {
+    margin: 2rem;
+    color: $light-color;
+    font-family: RioGrande;
+    font-size: xx-large;
+  }
+  li {
+    justify-content: space-around;
+    margin: 2em;
+  }
+}
+
+.sign-up {
+  button {
+    cursor: pointer;
+  }
+}
+input {
+  
+  max-width: 30rem;
+
+}
+form input:nth-child(3) {
+  width: 100%;
+}
+form {
+  padding: auto;
+  align-items: center;
+  margin: 2rem;
+  justify-items: space-around;
+  .form-input {
+    max-width: 60rem;
+    margin: 0 0 0.3em 0;
+  }
+}
+
+p {
+  margin: 1em auto;
+  a {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    font-family: Fragmentcore;
+    color: $white;
+    &:hover {
+      padding: auto;
+      color: $dark-color;
+      background-color: $hover;
+      border: 2em solid $light-color;
+      border-radius: 1rem;
+    }
+  }
+}
+
+a {
+  margin: auto;
+  width: 8rem;
+  border-radius: 1rem;
+  color: $hover;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px $white, 7px 7px 20px 0px $hover,
+    4px 4px 5px 0px $hover;
+  outline: none;
+  &:hover {
+    padding: auto;
+    color: $dark-color;
+    background-color: $primary;
+    border: 1px solid $white;
+    border-radius: 1rem;
+  }
+}
+a:before {
+  height: 0%;
+  width: 2px;
+}
+a:after {
+  width: 0%;
+  height: 2px;
+}
+a:hover {
+  color: $white;
+  background: transparent;
+}
+a:hover:before {
+  height: 100%;
+}
+a:hover:after {
+  width: 100%;
+}
+a span:before,
+a span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: rgba(251, 75, 2, 1);
+  box-shadow: -7px -7px 20px 0px rgba(255, 255, 255, 0.9),
+    -4px -4px 5px 0px rgba(255, 255, 255, 0.9),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.2), 4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+a span:before {
+  width: 2px;
+  height: 0%;
+}
+a span:after {
+  height: 2px;
+  width: 0%;
+}
+a span:hover:before {
+  height: 100%;
+}
+a span:hover:after {
+  width: 100%;
+}

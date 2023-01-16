@@ -1,0 +1,19 @@
+@import "../../styles.scss";
+
+.footer {
+  span {
+    margin-left: 1em;
+    font-size: 1em;
+    font-family: RoadRage;
+  }
+  color: $dark-color;
+  padding: 1em;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-top: 0.2rem solid $grey;
+  background-color: $light-color;
+}
+

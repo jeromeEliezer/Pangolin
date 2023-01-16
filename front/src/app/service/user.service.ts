@@ -1,0 +1,44 @@
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { login, signUp } from '../data-type';
+import { environment } from './environement';
+
+const apiUrl = "http://localhost:4000/api/";
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  invalidUserAuth = new EventEmitter<boolean>(false);
+  constructor( private http: HttpClient, private router: Router) {  }
+
+  userSignUp(user: signUp) {
+    this.http.post(`${apiUrl}user`, user, { observe: 'response' })
+      .subscribe((result) => {
+        if (result) {
+          localStorage.setItem('user', JSON.stringify(result.body));
+          this.router.navigate(['/']);
+        }
+      })
+  }
+  userLogin(data: login) {
+    this.http.post<signUp[]>(`${apiUrl}user/login`, { data }
+
+    ).subscribe((result: any) => {
+      if (result && result.body?.length) {
+        localStorage.setItem('user', JSON.stringify(result.body[0]));
+        this.router.navigate(['/']);
+        this.invalidUserAuth.emit(false)
+      } else {
+        this.invalidUserAuth.emit(true)
+      }
+    })
+  }
+
+  userAuthReload() {
+    if (localStorage.getItem('user')) {
+      this.router.navigate(['/']);
+    }
+  }
+}

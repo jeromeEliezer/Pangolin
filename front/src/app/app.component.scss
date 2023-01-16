@@ -1,0 +1,11 @@
+@import "../styles.scss";
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/images/backgrounPrimary.png');
+  background-position: center top;
+  background-attachment: fixed;
+  box-shadow: 0 0 10rem rgba(0, 0, 0, 0.3);
+ 
+}

@@ -1,0 +1,76 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+html,
+body,
+input,
+textarea,
+button {
+  font-family: Poppins, sans-serif;
+}
+
+p {
+  font-family: HelveticaNeue;
+}
+
+// var
+$black: #000;
+$grey: #424242a6;
+$lightgrey: #f5f5f5;
+$white: #fff;
+$blue: #00b4d8;
+$lightblue: #ebf7ff;
+$hover: #fdc209;
+$primary : #F26800;
+$shadow: #0000001f;
+$red: #ff3f3f;
+$lightred: #ffe1e0;
+$info: #c5f5ff50;
+$green: #00994a;
+$md: 768px;
+$menuHeight: 4.2em;
+$dark-gray: #333333;
+$medium-gray: #555555;
+$light-gray: #999999;
+$light-color: #f2f2f2;
+$dark-color: #222222;
+
+/// fonts
+@font-face {
+  font-family: RoadRage;
+  src: url("./assets/fonts/Road_Rage.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Fragmentcore;
+  src: url("./assets/fonts/Fragmentcore.otf") format("opentype");
+}
+@font-face {
+  font-family: RioGrande;
+  src: url("./assets/fonts/RioGrande.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: HelveticaNeue;
+  src: url("./assets/fonts/HelveticaNeue.ttc") format("opentype");
+}
+
+
