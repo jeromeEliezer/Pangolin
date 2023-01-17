@@ -1,8 +1,8 @@
 import mongoose, { ConnectOptions } from "mongoose";
-import { logcatch } from "src/utils/logger";
+import { logcatch } from "../utils/logger";
 import config from "./env";
 
-(async () => {
+const database = async () => {
     try {
         const mongooseOptions: ConnectOptions = {
             connectTimeoutMS: 1000
@@ -12,4 +12,6 @@ import config from "./env";
     } catch (error) {
         logcatch(error, "err")
     }
-})()
+}; 
+
+export default database;

@@ -13,6 +13,5 @@ import jwt from 'jsonwebtoken';
 const mailerService = new MailerService(nodemailer);
 const jwtService = new JwtService(jwt, config.jwt_secret);
 
-
 // export all the libs services
 export {mailerService, jwtService};

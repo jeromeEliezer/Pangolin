@@ -22,7 +22,9 @@ Prerequisites
 
 1. You need to install packages. Open your terminal
 2. `npm install` in api and in front
-3. `npm run start` in api and in front
+3. `npm run start` in api
+4. `ng serve --open` in front
+
 
 ##
 
