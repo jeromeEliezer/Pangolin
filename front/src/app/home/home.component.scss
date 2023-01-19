@@ -1,20 +1,30 @@
 @import "../../styles.scss";
+.main {
+  display: flex;
+  top :20rem;
+  color: aqua;
+  text-align: center;
+}
 .content {
   section : {
-padding: 2rem;
+    padding: 3rem;
+  }
+  h3 {
+    margin-top: 3.7rem;
   }
 }
 .title {
+  margin-top: 3.7rem;
   font-size: xx-large;
   color: $white;
   font-weight: 500;
-  margin-top: 1rem;
+  padding-left: 1rem;
 }
 
 .card {
-  color: $white;
-  margin: 3rem auto;
-  max-width: 80vw;
+  color: $dark-color;
+  margin: 4rem auto;
+  max-width: 90rem;
   max-height: 100vh;
   background-color: $light-gray;
   border-radius: 1rem;
@@ -24,7 +34,6 @@ padding: 2rem;
   padding: 2rem;
 
   p {
-    max-width: 60vw;
     text-align: center;
   }
   a {
@@ -36,87 +45,83 @@ padding: 2rem;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
     display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px $white,
-     7px 7px 20px 0px $hover,
-     4px 4px 5px 0px $hover;
+    box-shadow: inset 2px 2px 2px 0px $white, 7px 7px 20px 0px $hover,
+      4px 4px 5px 0px $hover;
     outline: none;
-  }  
-    a:before{
-      height: 0%;
-      width: 2px;
-   }
-   a:after {
-     width: 0%;
-     height: 2px;
-   }
-   a:hover{
-     color: $white;
-     background: transparent;
-   }
-   a:hover:before {
-     height: 100%;
-   }
-   a:hover:after {
-     width: 100%;
-   }
-   a span:before,
-   a span:after {
-     position: absolute;
-     content: "";
-     left: 0;
-     top: 0;
-     background: rgba(251,75,2,1);
-     box-shadow:
-      -7px -7px 20px 0px rgba(255,255,255,.9),
-      -4px -4px 5px 0px rgba(255,255,255,.9),
-      7px 7px 20px 0px rgba(0,0,0,.2),
-      4px 4px 5px 0px rgba(0,0,0,.3);
-     transition: all 0.3s ease;
-   }
-   a span:before {
-     width: 2px;
-     height: 0%;
-   }
-   a span:after {
-     height: 2px;
-     width: 0%;
-   }
-   a span:hover:before {
-     height: 100%;
-   }
-   a span:hover:after {
-     width: 100%;
-   }
-    &:hover {
-      padding: auto;
-        color: $dark-color;
-        background-color: $primary;
-        border: 1px solid $white;
-        border-radius: 1rem;
-      }
-    text-align: center;
-    cursor: pointer;
-    font-size: 0.9rem;
   }
-
+  a:before {
+    height: 0%;
+    width: 2px;
+  }
+  a:after {
+    width: 0%;
+    height: 2px;
+  }
+  a:hover {
+    color: $white;
+    background: transparent;
+  }
+  a:hover:before {
+    height: 100%;
+  }
+  a:hover:after {
+    width: 100%;
+  }
+  a span:before,
+  a span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: $primary;
+    box-shadow: -7px -7px 20px 0px $primary,
+      -4px -4px 5px 0px $primary,
+      7px 7px 20px 0px $dark-color, 4px 4px 5px 0px $grey;
+    transition: all 0.3s ease;
+  }
+  a span:before {
+    width: 2px;
+    height: 0%;
+  }
+  a span:after {
+    height: 2px;
+    width: 0%;
+  }
+  a span:hover:before {
+    height: 100%;
+  }
+  a span:hover:after {
+    width: 100%;
+  }
+  &:hover {
+    padding: auto;
+    color: $dark-color;
+    background-color: $primary;
+    border: 1px solid $white;
+    border-radius: 1rem;
+  }
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
 
 .story {
-    background: linear-gradient(to bottom, rgba(255, 165, 0, 0.7), rgba(255, 165, 0, 0));
-    overflow-y: scroll;
-    text-align: center;
-    color: $white;
-    border-radius: 0.5rem;
-    p{
-        margin: 1em auto;
-        max-width: 80vw;
-       
-    }
-    
-    p:nth-child(6) {
-        margin-bottom: 10rem;
-    }
+  margin: auto;
+  max-width: 140rem;
+  background: linear-gradient(to bottom, $primary, rgba(255, 165, 0, 0));
+  overflow-y: scroll;
+  text-align: center;
+  color: $dark-color;
+  border-radius: 0.5rem;
+  p {
+    margin: 1.2em auto;
+    max-width: 80vw;
+  }
+
+  p:nth-child(6) {
+    margin-bottom: 10rem;
+  }
 }
 
 .story h3 {

@@ -1,51 +1,51 @@
 <nav class="nav">
   <h1>
     <sub>Social</sub>
-    <a  routerLink="home">Fantôme</a>
+    <a routerLink="home">Fantôme</a>
   </h1>
   <button (click)="toggleMenu()">
     <i class="burger material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
   </button>
-  <div class="menu" [class.isOpen]="isMenuOpen" [ngSwitch]="menuType">
-    <ul *ngSwitchCase="'default'">
-      <li>
-        <a routerLink="user-auth">Mon compte</a>
-      </li>
-      <li>
-        <a class="home" routerLink="home">Accueil</a>
-      </li>
-      <li>
-        <a class="menu-items" routerLink="user-auth"
-          >Se Connecter/Créer un compte</a
-        >
-      </li>
-    </ul>
-    <ul *ngSwitchCase="'user'">
-      <li>
-        <a class="menu-items" routerLink="home">Accueil</a>
-      </li>
-      <li>
-        <a>{{ userName | titlecase }}</a>
-      </li>
-      <li>
-        <a class="menu-items" (click)="userLogout()">Logout</a>
-      </li>
-    </ul>
-    <ul *ngSwitchCase="'roles'">
-      <li>
-        <a class="menu-items" routerLink="edit-roles"
-          >Modifier son role</a
-        >
-      </li>
-      <li>
-        <a class="menu-items" routerLink="list-friends">Liste de mes amis</a>
-      </li>
-      <li>
-        <a class="menu-items" (click)="logout()">Deconnexion</a>
-      </li>
-      <li>
-        <a href="#">{{ rolesName | titlecase }}</a>
-      </li>
-    </ul>
-  </div>
+  <section>
+    <div class="menu" [ngClass]="{ open: isMenuOpen }" [ngSwitch]="menuType">
+      <ul *ngSwitchCase="'default'">
+        <li (click)="toggleMenu()">
+          <a routerLink="user-auth">Mon compte</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a class="home" routerLink="home">Accueil</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a class="menu-items" routerLink="user-auth"
+            >Se Connecter/Créer un compte</a
+          >
+        </li>
+      </ul>
+      <ul *ngSwitchCase="'user'">
+        <li (click)="toggleMenu()">
+          <a class="menu-items" routerLink="home">Accueil</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a>{{ userName | titlecase }}</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a class="menu-items" (click)="userLogout()">Logout</a>
+        </li>
+      </ul>
+      <ul *ngSwitchCase="'roles'">
+        <li (click)="toggleMenu()">
+          <a class="menu-items" routerLink="edit-roles">Modifier son role</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a class="menu-items" routerLink="list-friends">Liste de mes amis</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a class="menu-items" (click)="logout()">Deconnexion</a>
+        </li>
+        <li (click)="toggleMenu()">
+          <a href="#">{{ rolesName | titlecase }}</a>
+        </li>
+      </ul>
+    </div>
+  </section>
 </nav>

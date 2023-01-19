@@ -1,20 +1,14 @@
 @import "../../styles.scss";
 
 .user-auth-root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 2rem;
-  min-width: 40vw;
-  max-width: 80vw;
-  max-height: 80vh;
-  margin: 6em auto;
-  text-align: left;
+  position: fixed;
+  top: 20%;
+  margin: 2rem 1rem;
   color: $white;
   background-color: rgba(185, 120, 7, 0.5);
   border: 0.5rem solid $light-color;
   border-radius: 0.5rem;
+
   h2 {
     margin: 2rem;
     color: $light-color;
@@ -33,17 +27,15 @@
   }
 }
 input {
-  
   max-width: 30rem;
-
 }
 form input:nth-child(3) {
-  width: 100%;
+  width: 90%;
 }
 form {
   padding: auto;
   align-items: center;
-  margin: 2rem;
+  margin: 3rem;
   justify-items: space-around;
   .form-input {
     max-width: 60rem;
@@ -79,7 +71,6 @@ a {
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
   display: inline-block;
   box-shadow: inset 2px 2px 2px 0px $white, 7px 7px 20px 0px $hover,
     4px 4px 5px 0px $hover;
@@ -135,4 +126,10 @@ a span:hover:before {
 }
 a span:hover:after {
   width: 100%;
+}
+
+.user-auth-root {
+  @media (min-width: $md) {
+    left: 37%;
+  }
 }
