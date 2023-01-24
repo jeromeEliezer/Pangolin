@@ -21,12 +21,15 @@
   }
 }
 
+
+
 .sign-up {
   button {
     cursor: pointer;
+    margin-top: 1rem;
   }
 }
-input {
+.form-input {
   max-width: 30rem;
 }
 form input:nth-child(3) {

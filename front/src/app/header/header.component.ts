@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   menuType: string = 'default';
   rolesName:string="";
   userName:string="";
-  constructor(private route: Router) {}
+  constructor(private route: Router, public userService: UserService ) {}
 
   ngOnInit(): void {
     this.route.events.subscribe((val: any) => {
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
   userLogout(){
     localStorage.removeItem('user');
     this.route.navigate(['/user-auth'])
+    this.userService.logout();
   }
 
   toggleMenu(): void {

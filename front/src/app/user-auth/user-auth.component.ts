@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { login, signUp } from '../data-type';
+import { Route, Router } from '@angular/router';
+import { TLogin, TSignUp } from '../data-type';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -8,27 +9,43 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./user-auth.component.scss'],
 })
 export class UserAuthComponent implements OnInit {
-  showLogin:boolean=true
-  authError:string="";
-  constructor(private user: UserService) {}
+  showLogin: boolean = true
+  authError: string = "";
+  rolesItems: string[] = ["Guerrier", "Alchimiste", "Sorcier", "Espions", "Enchanteur"];
+  constructor(private userservice: UserService, private route: Router) {
+
+  }
 
   ngOnInit(): void {
-    this.user.userAuthReload();
+    this.userservice.userAuthReload();
   }
 
-  signUp(data: signUp) {
-    this.user.userSignUp(data);
+
+  async signUp(data: TSignUp) {
+    console.log(data, "data");
+    (await this.userservice.userSignUp(data)).subscribe((res: any) => {
+      if (res.status === 201)
+        this.route.navigateByUrl('/fantomes');
+      console.log(res);
+    });
+    this.userservice.invalidUserAuth;
   }
-  login(data: login) {
-    this.user.userLogin(data)
-    this.user.invalidUserAuth.subscribe((result: any)=>{
-      console.warn(result);
-    })
+  login(data: TLogin) {
+    this.userservice.userLogin(data).subscribe(
+      () => {
+        this.route.navigateByUrl('fantomes');
+      },
+      err => {
+        alert('erreur de connexion')
+      }
+    );
+    this.userservice.invalidUserAuth;
   }
-  openSignUp(){
-    this.showLogin=false
+  
+  openSignUp() {
+    this.showLogin = false
   }
-  openLogin(){
-this.showLogin=true;
+  openLogin() {
+    this.showLogin = true;
   }
 }

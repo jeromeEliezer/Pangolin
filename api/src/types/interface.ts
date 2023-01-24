@@ -9,3 +9,7 @@ export interface IUser {
     email:string;
     role:string;
   }
+
+
+
+export const enumRoles = ["Guerrier","Alchimiste","Sorcier", "Espions", "Enchanteur"];

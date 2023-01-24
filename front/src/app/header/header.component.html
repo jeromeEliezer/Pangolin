@@ -10,13 +10,14 @@
     <div class="menu" [ngClass]="{ open: isMenuOpen }" [ngSwitch]="menuType">
       <ul *ngSwitchCase="'default'">
         <li (click)="toggleMenu()">
-          <a routerLink="user-auth">Mon compte</a>
+          <a routerLink="user-auth" *ngIf="userService.isLoggedOut$ | async">Mon compte</a>
         </li>
         <li (click)="toggleMenu()">
           <a class="home" routerLink="home">Accueil</a>
         </li>
         <li (click)="toggleMenu()">
           <a class="menu-items" routerLink="user-auth"
+          *ngIf="userService.isLoggedOut$ | async"
             >Se Connecter/Créer un compte</a
           >
         </li>
@@ -29,7 +30,7 @@
           <a>{{ userName | titlecase }}</a>
         </li>
         <li (click)="toggleMenu()">
-          <a class="menu-items" (click)="userLogout()">Logout</a>
+          <a class="menu-items" *ngIf="userService.isLoggedIn$ | async" (click)="userLogout()">Deconnexion</a>
         </li>
       </ul>
       <ul *ngSwitchCase="'roles'">
