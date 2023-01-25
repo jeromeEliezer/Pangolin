@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../service/user.service';
+import { AUTH_DATA, UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
          this.rolesName=rolesData.name;
           this.menuType = 'roles';
         }
-        else if(localStorage.getItem('user')){
-          let userStore = localStorage.getItem('user');
+        else if(localStorage.getItem(AUTH_DATA)){
+          let userStore = localStorage.getItem(AUTH_DATA);
           let userData = userStore && JSON.parse(userStore);
           this.userName= userData.name;
           this.menuType='user';

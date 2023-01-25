@@ -23,25 +23,35 @@ export class UserAuthComponent implements OnInit {
 
   async signUp(data: TSignUp) {
     console.log(data, "data");
-    (await this.userservice.userSignUp(data)).subscribe((res: any) => {
-      if (res.status === 201)
-        this.route.navigateByUrl('/fantomes');
-      console.log(res);
+    (await this.userservice.userSignUp(data)).subscribe({
+      next: () => {
+        // succesfull
+        alert('Votre compte a bien été créé. vous allez être redirigé sur le formulaire de connexion');
+        this.route.navigateByUrl('/user-auth');
+      },
+      error: (err) => {
+        // error 
+        alert('Une erreur est survenue');
+        this.userservice.invalidUserAuth;
+      }
     });
+
     this.userservice.invalidUserAuth;
   }
+
   login(data: TLogin) {
-    this.userservice.userLogin(data).subscribe(
-      () => {
+    this.userservice.userLogin(data).subscribe({
+      next: () => {
         this.route.navigateByUrl('fantomes');
       },
-      err => {
-        alert('erreur de connexion')
+      error: (err) => {
+        alert('Mot de passe ou email incorrecte');
+        this.userservice.invalidUserAuth;
       }
-    );
-    this.userservice.invalidUserAuth;
+    });
   }
-  
+
+
   openSignUp() {
     this.showLogin = false
   }
