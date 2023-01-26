@@ -1,4 +1,17 @@
-<div>
-    <h3>La liste de tous les fantômes à travers le monde !</h3>
-
+<div class="container">
+  <h2><caption>Listes des fantômes</caption></h2>
+  <table  class="rwd-table">
+    <tr>
+      <th>Pseudo</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td><button (click)="AddFriend(user._id)">Suivre</button></td>
+    </tr>
+  </table>
 </div>

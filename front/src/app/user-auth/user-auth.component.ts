@@ -25,13 +25,13 @@ export class UserAuthComponent implements OnInit {
     console.log(data, "data");
     (await this.userservice.userSignUp(data)).subscribe({
       next: () => {
-        // succesfull
-        alert('Votre compte a bien été créé. vous allez être redirigé sur le formulaire de connexion');
-        this.route.navigateByUrl('/user-auth');
+        this.authError ='Votre compte a bien été créé. vous allez être redirigé sur le formulaire de connexion';
+        this.route.navigateByUrl('fantomes');
       },
       error: (err) => {
         // error 
         alert('Une erreur est survenue');
+        this.authError ='Une erreur est survenue';
         this.userservice.invalidUserAuth;
       }
     });

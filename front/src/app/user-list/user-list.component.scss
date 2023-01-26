@@ -1,0 +1,135 @@
+@import "../../styles.scss";
+
+.container {
+  overflow-y: scroll;
+  margin-top: $menuHeight;
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  background-color: $black;
+  color: $white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h3 {
+    margin: 2rem;
+    text-align: center;
+  }
+}
+caption {
+  min-width: 30rem;
+  margin: 2rem;
+  color: $light-color;
+  font-family: RioGrande;
+  font-size: xx-large;
+}
+.rwd-table {
+  color: $white;
+  background-color: rgba(185, 120, 7, 0.5);
+  border: 0.5rem solid $light-color;
+  border-radius: 0.5rem;
+  border: 0.3rem solid $primary;
+  margin: 0 1rem 8rem 1em;
+  padding: 1.4rem;
+  tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!
+  }
+
+  td {
+    display: block;
+
+    &:first-child {
+      padding-top: 0.5em;
+    }
+    &:last-child {
+      padding-bottom: 0.5em;
+    }
+
+    &:before {
+      content: attr(data-th) ": "; // who knew you could do this? The internet, that's who.
+      font-weight: bold;
+
+      // optional stuff to make it look nicer
+      width: 6.5em; // magic number :( adjust according to your own content
+      display: inline-block;
+      // end options
+
+      @media (min-width: $md) {
+        display: none;
+      }
+    }
+  }
+
+  th,
+  td {
+    text-align: left;
+
+    @media (min-width: $md) {
+      display: table-cell;
+      padding: 0.25em 0.5em;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+button {
+  margin: auto;
+  width: 8rem;
+  height: 2rem;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+    border: none;
+    background: $hover;
+      background: linear-gradient(0deg, $hover 0%, $primary 100%);
+      color: $white;
+      overflow: hidden;
+}
+  button:hover {
+      text-decoration: none;
+      color: $white;
+  }
+  button:before {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      top: -180px;
+      left: 0;
+      width: 30px;
+      height: 100%;
+      background-color:$white;
+      animation: shiny-btn1 3s ease-in-out infinite;
+  }
+  button:hover{
+    opacity: .7;
+  }
+  button:active{
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.2),
+      inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+  }
+  

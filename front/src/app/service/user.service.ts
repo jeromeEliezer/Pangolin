@@ -5,13 +5,13 @@ import { TLogin, TSignUp, TUser } from '../data-type';
 import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 
-const apiUrl = "http://localhost:4000/api/";
 export const AUTH_DATA = "auth_data";
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
+  private apiUrl = "http://localhost:4000/api/";
   invalidUserAuth = new EventEmitter<boolean>(false);
   private subject = new BehaviorSubject<TUser | null>(null);
 
@@ -34,14 +34,15 @@ export class UserService {
   }
 
   async userSignUp(data: TSignUp): Promise<Observable<any>> {
-    return this.http.post(`${apiUrl}user/`, { data })
-    .pipe(catchError((error: any) => {
-      // traitement de l'erreur ici
-      return  "Des donnés sont erronnées. Veuillez ressayer ulterieurement";
-    }));
+    return this.http.post(`${this.apiUrl}user/`, { data })
+      .pipe(catchError((error: any) => {
+        const err = new Error(error);
+        return throwError(() => err);
+      }));
   }
+  // "Des donnés sont erronnées. Veuillez ressayer ulterieurement"
   userLogin(data: TLogin): Observable<TLogin> {
-    return this.http.post<TLogin>(`${apiUrl}user/login`, { data })
+    return this.http.post<TLogin>(`${this.apiUrl}user/login`, { data })
       .pipe(
         tap((user) => this.subject.next(user)),
         shareReplay()
@@ -58,5 +59,8 @@ export class UserService {
     }
   }
 
+  getUsers(): Observable<TUser[]> {
+    return this.http.get<TUser[]>(this.apiUrl + "user/");
+  }
 
 }

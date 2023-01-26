@@ -9,9 +9,10 @@ export interface TSignUp {
     password: string;
   }
   
-  export type TUser = {
+  export interface TUser {
+    [key: string]: any;
+    _id?:string;
     username?: string;
     email: string;
     role?: string;
-    password: string;
   }
