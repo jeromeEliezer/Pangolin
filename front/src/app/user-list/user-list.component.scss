@@ -32,48 +32,53 @@ caption {
   border: 0.3rem solid $primary;
   margin: 0 1rem 8rem 1em;
   padding: 1.4rem;
+  @media (max-width: $md) {
+    gap: 8;
+    width: 100%;
+    max-width: 80%;
+    margin-bottom: 2rem;   
+  }
   tr {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    @media (max-width: $md) {
+      background-color: $dark-color;
+      padding: 10.4rem;
+      margin: auto;
+      
+    }
   }
 
   th {
-    display: none; // for accessibility, use a visually hidden method here instead! Thanks, reddit!
+    margin: 2rem;
+    color: $light-color;
+    @media (max-width: $md) {
+      display: none;
+    }
+  }
+
+  th:last-child {
+    text-align: center;
   }
 
   td {
     display: block;
-
+   
     &:first-child {
       padding-top: 0.5em;
     }
     &:last-child {
       padding-bottom: 0.5em;
-    }
-
-    &:before {
-      content: attr(data-th) ": "; // who knew you could do this? The internet, that's who.
-      font-weight: bold;
-
-      // optional stuff to make it look nicer
-      width: 6.5em; // magic number :( adjust according to your own content
-      display: inline-block;
-      // end options
-
-      @media (min-width: $md) {
-        display: none;
-      }
+     
     }
   }
 
   th,
   td {
     text-align: left;
+    padding-left: 1em;
 
     @media (min-width: $md) {
       display: table-cell;
       padding: 0.25em 0.5em;
-
       &:first-child {
         padding-left: 0;
       }
@@ -102,34 +107,35 @@ button {
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
-    border: none;
-    background: $hover;
-      background: linear-gradient(0deg, $hover 0%, $primary 100%);
-      color: $white;
-      overflow: hidden;
+  border: none;
+  background: $hover;
+  background: linear-gradient(0deg, $hover 0%, $primary 100%);
+  color: $white;
+  overflow: hidden;
+  @media (min-width: $md) {
+  text-align: center;
+  }
 }
-  button:hover {
-      text-decoration: none;
-      color: $white;
-  }
-  button:before {
-      position: absolute;
-      content: '';
-      display: inline-block;
-      top: -180px;
-      left: 0;
-      width: 30px;
-      height: 100%;
-      background-color:$white;
-      animation: shiny-btn1 3s ease-in-out infinite;
-  }
-  button:hover{
-    opacity: .7;
-  }
-  button:active{
-    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-      inset -4px -4px 6px 0 rgba(255,255,255,.2),
-      inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-  }
-  
+button:hover {
+  text-decoration: none;
+  color: $white;
+}
+button:before {
+  position: absolute;
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: $white;
+  animation: shiny-btn1 3s ease-in-out infinite;
+}
+button:hover {
+  opacity: 0.7;
+}
+button:active {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+}

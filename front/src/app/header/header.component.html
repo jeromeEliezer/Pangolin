@@ -6,47 +6,30 @@
   <button (click)="toggleMenu()">
     <i class="burger material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
   </button>
-  <section>
-    <div class="menu" [ngClass]="{ open: isMenuOpen }" [ngSwitch]="menuType">
-      <ul *ngSwitchCase="'default'">
-        <li (click)="toggleMenu()">
-          <a routerLink="user-auth" *ngIf="userService.isLoggedOut$ | async">Mon compte</a>
+    <div
+      class="menu"
+      [ngClass]="{ open: isMenuOpen }"
+      
+    >
+      <ul>
+        <li  *ngIf="menuType === 'user'" (click)="toggleMenu()">
+          <a class="menu-items" routerLink="home">Accueil</a>
         </li>
-        <li (click)="toggleMenu()">
-          <a class="home" routerLink="home">Accueil</a>
+        <li *ngIf="menuType === 'user'" (click)="toggleMenu()">
+          <a>{{ username | titlecase }}</a>
         </li>
-        <li (click)="toggleMenu()">
+        <li  *ngIf="menuType === 'user'" class="menu-items" (click)="toggleMenu()">
+          <a routerLink="user-auth">Mon compte</a>
+        </li>
+        <li *ngIf="menuType === 'user'" (click)="toggleMenu()">
+          <a class="menu-items" (click)="userLogout()">Deconnexion</a>
+        </li>
+        <li class="menu-items" *ngIf="menuType !== 'user'" (click)="toggleMenu()">
           <a class="menu-items" routerLink="user-auth"
-          *ngIf="userService.isLoggedOut$ | async"
             >Se Connecter/Créer un compte</a
           >
         </li>
       </ul>
-      <ul *ngSwitchCase="'user'">
-        <li (click)="toggleMenu()">
-          <a class="menu-items" routerLink="home">Accueil</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a>{{ userName | titlecase }}</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a class="menu-items" *ngIf="userService.isLoggedIn$ | async" (click)="userLogout()">Deconnexion</a>
-        </li>
-      </ul>
-      <ul *ngSwitchCase="'roles'">
-        <li (click)="toggleMenu()">
-          <a class="menu-items" routerLink="edit-roles">Modifier son role</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a class="menu-items" routerLink="list-friends">Liste de mes amis</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a class="menu-items" (click)="logout()">Deconnexion</a>
-        </li>
-        <li (click)="toggleMenu()">
-          <a href="#">{{ rolesName | titlecase }}</a>
-        </li>
-      </ul>
     </div>
-  </section>
 </nav>
+

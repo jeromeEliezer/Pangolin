@@ -13,6 +13,10 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuOverviewComponent } from './menu-overview/menu-overview.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './state/reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +28,9 @@ import { UserListComponent } from './user-list/user-list.component';
     UserListComponent,
   ],
   imports: [
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25}),
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

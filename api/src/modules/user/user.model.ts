@@ -3,7 +3,7 @@ import { Schema, model } from 'mongoose';
 import { enumRoles, IUser } from '../../types/interface';
 
 
-const userSchema = new Schema({
+const userSchema = new Schema<IUser>({
     username: {
         type: String,
         required: true,
@@ -26,7 +26,6 @@ const userSchema = new Schema({
     }
 });
 
-const User = model<IUser>("User", userSchema);
 
-export default User;
+export default model<IUser>("User", userSchema);
 

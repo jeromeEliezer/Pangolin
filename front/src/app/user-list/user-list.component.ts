@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  AddFriend(_id:any) {
+  addFriend(_id:any) {
     console.log(_id,"id")
      
   }

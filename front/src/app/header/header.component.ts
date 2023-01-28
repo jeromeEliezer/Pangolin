@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AUTH_DATA, UserService } from '../service/user.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +11,8 @@ export class HeaderComponent implements OnInit {
   isMenuOpen = false;
   menuType: string = 'default';
   rolesName:string="";
-  userName:string="";
-  constructor(private route: Router, public userService: UserService ) {}
+  username:string="";
+  constructor(private route: Router, private userService: UserService ) {}
 
   ngOnInit(): void {
     this.route.events.subscribe((val: any) => {
@@ -23,10 +23,10 @@ export class HeaderComponent implements OnInit {
          this.rolesName=rolesData.name;
           this.menuType = 'roles';
         }
-        else if(localStorage.getItem(AUTH_DATA)){
-          let userStore = localStorage.getItem(AUTH_DATA);
+        else if(localStorage.getItem(this.userService.AUTH_DATA)){
+          let userStore = localStorage.getItem(this.userService.AUTH_DATA);
           let userData = userStore && JSON.parse(userStore);
-          this.userName= userData.name;
+          this.username= userData.username;
           this.menuType='user';
         }
          else {

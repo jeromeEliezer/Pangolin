@@ -15,6 +15,7 @@
           placeholder="Ecris ton Pseudo"
           ngModel
           #username="ngModel"
+          required
         />
         <p class="invalid-input">
           <span *ngIf="username.invalid && username.touched"
@@ -56,7 +57,6 @@
             {{ item }}
           </option>
         </select>
-
         <br />
         <button [disabled]="userSignUp.invalid" class="form-button">
           S'inscrire
