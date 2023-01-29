@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { getUserIsAuth } from './state';
 import { setIsAuth } from './state/actions';
 import { AppState } from './state/reducer';
 
@@ -11,7 +12,13 @@ import { AppState } from './state/reducer';
 export class AppComponent {
   title = 'Pangolin-network';
   constructor(private store: Store<AppState>) {
-    this.store.dispatch(setIsAuth({isAuth: true}));
+    this.store.pipe(select(getUserIsAuth)).subscribe(
+     (isAuth) => {
+      console.log("------------");
+      console.log(isAuth);
+     }
+      
+    )
   }
 
 }

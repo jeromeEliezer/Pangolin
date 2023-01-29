@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+
 import { TUser } from '../data-type';
 import { UserService } from '../service/user.service';
+import { getUserIsAuth } from '../state';
+import { AppState, MainState } from '../state/reducer';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +14,16 @@ import { UserService } from '../service/user.service';
 export class UserListComponent implements OnInit {
   users!: TUser[];
   keys!: string[];
-  constructor(private userservice: UserService) {
+  constructor(private userservice: UserService, private store: Store<AppState>) {
+
+    this.store.pipe(
+      select(getUserIsAuth)
+    ).subscribe(
+      (isAuth) => {
+        console.log(isAuth);
+      }
+    )
+
   }
   ngOnInit() {
     this.getUsers();
@@ -18,13 +31,13 @@ export class UserListComponent implements OnInit {
   getUsers() {
     this.userservice.getUsers().subscribe(users => {
       this.users = users
-      if(users.length>0) this.keys = Object.keys(users[0])
+      if (users.length > 0) this.keys = Object.keys(users[0])
     });
   }
 
-  addFriend(_id:any) {
-    console.log(_id,"id")
-     
+  addFriend(_id: any) {
+    console.log(_id, "id")
+
   }
-  
+
 }

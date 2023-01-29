@@ -1,19 +1,33 @@
-import { createFeatureSelector, createSelector, createReducer, on, Action } from '@ngrx/store';
-import * as fromActions from './actions' 
-export interface AppState {
+import { createFeatureSelector, createSelector, createReducer, on, Action, ActionReducer, ActionReducerMap } from '@ngrx/store';
+import * as fromActions from './actions'
+
+
+export interface MainState {
     isAuth: boolean;
 }
 
-
-const AppStateInitial: AppState = {
+export const mainStateInitial: MainState = {
     isAuth: false
 }
 
-const reducer = createReducer(
-    AppStateInitial,
-    on(fromActions.setIsAuth, (state, { isAuth }): AppState => ({ isAuth })),
+const _mainReducer = createReducer(
+    mainStateInitial,
+    on(fromActions.setIsAuth, (state, { isAuth }): MainState => ({ isAuth })),
 )
 
-export function appReducer(state: AppState, action: Action) {
-    return reducer(state, action);
-  }
+const mainReducer = (state: MainState | undefined , actions: Action) => {
+    return _mainReducer(state, actions);
+}
+
+export interface AppState {
+    main: MainState;
+}
+
+export const appStateInitial : AppState = {
+    main: mainStateInitial
+}
+
+
+export const appReducer: ActionReducerMap<AppState> = {
+    main: mainReducer
+}
