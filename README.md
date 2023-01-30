@@ -1,4 +1,4 @@
-mean: [ mongoDb, express, angular, node ]
+
 # Intro
 
 <div>
